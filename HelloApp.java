@@ -1,15 +1,32 @@
+/**
+ * HelloApp UC4 - Greets multiple users using command-line arguments
+ * If no names are provided, it greets "World".
+ */
+
 public class HelloApp {
 
     public static void main(String[] args) {
 
-        String name;
+        // Default name
+        String name = "World";
 
+        // Check if names are provided
         if (args.length > 0) {
-            name = args[0];   // user provided name
-        } else {
-            name = "World";   // default value
+
+            StringBuilder nameBuilder = new StringBuilder();
+
+            for (int i = 0; i < args.length; i++) {
+                nameBuilder.append(args[i]);
+
+                if (i < args.length - 1) {
+                    nameBuilder.append(", ");
+                }
+            }
+
+            name = nameBuilder.toString();
         }
 
-        System.out.println("Hello, " + name);
+        // Print greeting
+        System.out.println("Hello, " + name + "!");
     }
 }
